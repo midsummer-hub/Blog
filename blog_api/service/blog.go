@@ -56,6 +56,12 @@ func (blog *Blog) FindCommentByBlog() []Comment{
 	return comment
 }
 
+//查询博客类型统计
+func  (blog *Blog) FindByTypeCount() (count int){
+	Db.Model(blog).Where("typeId = ?",blog.TypeId).Count(&count)
+	return
+}
+
 //查找博客列表
 func (blog *Blog) FindList(page *utils.Page) ([]*Blog, error) {
 	bs := make([]*Blog,0)
@@ -66,6 +72,14 @@ func (blog *Blog) FindList(page *utils.Page) ([]*Blog, error) {
 	}
 	result := curDb.Limit(page.Size).Offset(page.GetStart()).Order("`add_time` asc").Find(&bs)
 	return bs,result.Error
+}
+
+
+//查找单个博客
+func (blog *Blog) FindOne() (b *Blog) {
+	b = new(Blog)
+	Db.Where("id = ?", blog.Id).First(b)
+	return
 }
 
 //数量统计
@@ -83,5 +97,19 @@ func (blog *Blog) UpdateClick() *gorm.DB {
 //更新评论次数
 func (blog *Blog) UpdateReplay() *gorm.DB {
 	return Db.Model(blog).Where("id = ?",blog.Id).Update("replay_hit",gorm.Expr("replay_hit + ?",1))
+}
 
+//博客插入
+func (blog *Blog) Insert() *gorm.DB {
+	return Db.Create(blog)
+}
+
+//博客更新
+func (blog *Blog) Update() *gorm.DB {
+	return Db.Save(blog)
+}
+
+//博客删除
+func (blog *Blog) Delete() *gorm.DB {
+	return Db.Delete(blog)
 }

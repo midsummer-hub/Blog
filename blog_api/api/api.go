@@ -97,7 +97,7 @@ func Comment(c *gin.Context)  {
 	//IP
 	comment.Ip = c.ClientIP()
 	//添加时间
-	comment.AddTime = utils.GetDate(utils.DataFormat)
+	comment.AddTime = utils.GetDate(utils.DateFormat)
 	comment.Insert()
 
 	blog := &service.Blog{Id:comment.BlogId}

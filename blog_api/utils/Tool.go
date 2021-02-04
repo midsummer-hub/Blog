@@ -13,7 +13,7 @@ import (
 
 var Cache *cache.Cache = cache.New(time.Duration(conf.Conf.Cache.Expire)*time.Second,time.Duration(conf.Conf.Cache.Clearup)*time.Second)
 
-const DataFormat = "2006-01-02 15:04:05"
+const DateFormat = "2006-01-02 15:04:05"
 
 //获取当前时间
 func GetDate(format string) string  {

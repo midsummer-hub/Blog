@@ -52,6 +52,28 @@ func register(router *gin.Engine)  {
 		//更新博主密码
 		jwt.POST("/blogger/updatePassword",admin.BloggerUpdatePassword)
 
+		//博客类型list
+		jwt.POST("/blog/type/list",admin.TypeList)
+		//保存&修改博客类型
+		jwt.POST("/blog/type/save",admin.BlogTypeSave)
+		//查询一个类型
+		jwt.POST("/blog/type/one",admin.TypeOne)
+		//查询所有类型
+		jwt.POST("/blog/type/All",admin.TypeAll)
+		//删除博客类型
+		jwt.POST("/blog/type/delete",admin.BlogTypeDel)
+
+		//博客文章list
+		jwt.POST("/blog/list",admin.BlogList)
+		//博客文章内容保存
+		jwt.POST("/blog/save",admin.BlogSave)
+		//博客文章删除
+		jwt.POST("/blog/delete",admin.BlogDelete)
+		//查找一个文章博客
+		jwt.POST("/blog/one",admin.BlogOne)
+
+
+
 	}
 
 }
