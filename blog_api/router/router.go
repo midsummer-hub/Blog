@@ -43,6 +43,11 @@ func register(router *gin.Engine)  {
 	router.POST("/login",admin.Login)
 	//退出
 	router.POST("/logout",admin.Logout)
+
+	//文件上传
+	router.POST("/upload",admin.Upload)
+	//文件上传编辑
+	router.POST("/uploadEdit",admin.UploadEdit)
 	jwt := router.Group("/admin",middleware.Jwt())
 	{
 		//博主信息
@@ -69,9 +74,15 @@ func register(router *gin.Engine)  {
 		jwt.POST("/blog/save",admin.BlogSave)
 		//博客文章删除
 		jwt.POST("/blog/delete",admin.BlogDelete)
-		//查找一个文章博客
+		//查找一篇文章博客
 		jwt.POST("/blog/one",admin.BlogOne)
 
+		//博客评论list
+		jwt.POST("/comment/list",admin.CommentList)
+		//博客评论状态审核
+		jwt.POST("/comment/review",admin.CommentReview)
+		//博客评论删除
+		jwt.POST("/comment/delete",admin.CommentDelete)
 
 
 	}

@@ -3,7 +3,6 @@ package service
 import (
 	. "blog/blog_api/db"
 	"blog/blog_api/entity"
-	"fmt"
 	"github.com/jinzhu/gorm"
 )
 
@@ -16,7 +15,6 @@ func (Blogger) TableName() string {
 //登录
 func (blogger *Blogger) Login() (b *Blogger) {
 	b = new(Blogger)
-	fmt.Println(b)
 	Db.Where("username = ?",blogger.Username).First(b)
 	return
 }
@@ -25,7 +23,6 @@ func (blogger *Blogger) Login() (b *Blogger) {
 //查找博主
 func (blogger *Blogger) Find() (b *Blogger) {
 	b = new(Blogger)
-	fmt.Println(b)
 	Db.Where("id = 1").First(b)
 	return
 }
