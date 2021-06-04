@@ -90,7 +90,7 @@ func Comment(c *gin.Context)  {
 	//ID内容
 	err := c.BindJSON(&comment)
 	if err != nil {
-		res := &utils.Response{Code: 1000,Msg: "数据格式错误"}
+		res := &utils.Response{Code: 1000,Msg: "数据格式test错误"}
 		res.Json(c)
 		return
 	}
@@ -105,4 +105,5 @@ func Comment(c *gin.Context)  {
 	res := &utils.Response{Code: 0,Msg: ""}
 	res.Json(c)
 }
+
 
