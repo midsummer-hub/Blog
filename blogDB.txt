@@ -1,0 +1,43 @@
+
+CREATE TABLE `blog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `typeId` int(11) DEFAULT '0',
+  `summary` text COLLATE utf8mb4_unicode_ci,
+  `content` text COLLATE utf8mb4_unicode_ci,
+  `click_hit` int(11) DEFAULT '0',
+  `replay_hit` int(11) DEFAULT '0',
+  `add_time` varchar(19) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `update_time` varchar(19) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `blog_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `sort` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `blogger` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '用户名',
+  `password` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '密码',
+  `nickname` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '昵称',
+  `sign` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '个性签名',
+  `profile` text COLLATE utf8mb4_unicode_ci COMMENT '个人简介',
+  `img` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '个人头像',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `content` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `blog_id` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '0',
+  `add_time` varchar(19) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
